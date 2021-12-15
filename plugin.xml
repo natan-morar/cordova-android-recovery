@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-android-recovery" version="0.0.1">
+    <name>Android Recovery</name>
+
+    <description>An Android Cordova plugin to enable smooth recovery after Andoird kills the app.</description>
+    <license>MIT</license>
+
+    <keywords>cordova,android,recovery,kill</keywords>
+    <repo>https://github.com/mushishi78/cordova-android-recovery</repo>
+    <issue>https://github.com/mushishi78/cordova-android-recovery/issues</issue>
+
+    <js-module src="android-recovery.js" name="android-recovery">
+        <clobbers target="window.plugins.androidRecovery" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AndroidRecovery">
+                <param name="android-package" value="com.mushishi78.androidrecovery.AndroidRecoveryPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="com.mushishi78.androidrecovery.AndroidRecoveryService" android:stopWithTask="false" />
+        </config-file>
+        <source-file src="AndroidRecoveryPlugin.java" target-dir="src/com/mushishi78.androidrecovery" />
+        <source-file src="AndroidRecoveryService.java" target-dir="src/com/mushishi78.androidrecovery" />
+    </platform>
+</plugin>
