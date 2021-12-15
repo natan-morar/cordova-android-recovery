@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-android-recovery" version="0.0.1">
     <name>Android Recovery</name>
 
-    <description>An Android Cordova plugin to enable smooth recovery after Andoird kills the app.</description>
+    <description>An Android Cordova plugin to enable smooth recovery after Android kills the app.</description>
     <license>MIT</license>
 
     <keywords>cordova,android,recovery,kill</keywords>
