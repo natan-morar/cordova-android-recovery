@@ -9,18 +9,29 @@ import android.util.Log;
 
 public class AndroidRecoveryService extends Service {
     @Override
-    public int onStartCommand (Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("AndroidRecovery", "Service.onStartCommand");
-        SharedPreferences sharedPref = this.getSharedPreferences("AndroidRecovery", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.clear();
-        editor.apply();
-        this.stopSelf();
         return START_NOT_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("AndroidRecovery", "Service.onDestroy");
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        Log.e("AndroidRecovery", "Service.onTaskRemoved");
+        SharedPreferences sharedPref = getSharedPreferences("AndroidRecovery", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.apply();
+        stopSelf();
     }
 }

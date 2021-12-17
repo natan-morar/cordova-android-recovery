@@ -17,7 +17,11 @@ import org.json.JSONObject;
 public class AndroidRecoveryPlugin extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        Log.i("AndroidRecovery", "Plugin.initialize");
         super.initialize(cordova, webView);
+        Activity context = cordova.getActivity();
+        Intent intent = new Intent(context, AndroidRecoveryService.class);
+        context.startService(intent);
     }
 
     @Override
@@ -56,13 +60,5 @@ public class AndroidRecoveryPlugin extends CordovaPlugin {
         }
 
         return false;
-    }
-
-    @Override
-    public void onDestroy() {
-        Log.i("AndroidRecovery", "Plugin.onDestroy");
-        Activity context = cordova.getActivity();
-        Intent intent = new Intent(context, AndroidRecoveryService.class);
-        context.startService(intent);
     }
 }
