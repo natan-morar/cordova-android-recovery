@@ -1,4 +1,5 @@
 {
     "name": "cordova-plugin-android-recovery",
+    "version": "0.0.1",
     "private": "true"
 }
